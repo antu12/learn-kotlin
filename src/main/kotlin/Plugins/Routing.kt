@@ -2,6 +2,7 @@ package com.antu.Plugins
 
 import com.antu.features.account.accountRoutes
 import com.antu.features.blogs.blogRoutes
+import com.antu.features.product.productRoutes
 import io.ktor.resources.*
 import io.ktor.server.application.*
 import io.ktor.server.request.receive
@@ -69,5 +70,6 @@ fun Application.configureRouting() {
 
         blogRoutes()
         accountRoutes()
+        productRoutes()
     }
 }
