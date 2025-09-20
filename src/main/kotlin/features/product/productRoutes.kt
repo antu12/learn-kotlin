@@ -61,6 +61,14 @@ fun Application.productRoutes() {
             }
             call.respondText { "Form files: $fields" }
         }
+        post ("add_product"){
+            throw Exception("Database initialization failed")
+        }
+
+        post("products") {
+            call.respondText("", status = HttpStatusCode.Unauthorized)
+        }
+
     }
 }
 
