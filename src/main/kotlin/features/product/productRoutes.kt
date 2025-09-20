@@ -68,7 +68,9 @@ fun Application.productRoutes() {
         post("products") {
             call.respondText("", status = HttpStatusCode.Unauthorized)
         }
-
+        post("list_product") {
+            call.respondText("", status = HttpStatusCode.BadRequest)
+        }
     }
 }
 
