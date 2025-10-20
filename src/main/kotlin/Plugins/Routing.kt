@@ -68,6 +68,11 @@ fun Application.configureRouting() {
             call.respondText { "File uploaded!" }
         }
 
+        post("message") {
+            val message = call.receive<String>()
+            call.respondText(message)
+        }
+
         blogRoutes()
         accountRoutes()
         productRoutes()

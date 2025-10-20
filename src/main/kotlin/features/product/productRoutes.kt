@@ -4,6 +4,7 @@ import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.*
 import io.ktor.server.application.Application
+import io.ktor.server.request.receive
 import io.ktor.server.request.receiveMultipart
 import io.ktor.server.request.receiveNullable
 import io.ktor.server.request.receiveParameters
@@ -23,7 +24,7 @@ fun Application.productRoutes() {
         }
         // Serializable JSON
         post("product"){
-            val product = call.receiveNullable<Product>() ?: return@post call.respond(HttpStatusCode.BadRequest)
+            val product = call.receive<Product>()
             call.respond(product)
         }
 

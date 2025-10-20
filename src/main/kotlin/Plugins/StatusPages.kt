@@ -2,11 +2,16 @@ package com.antu.Plugins
 
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.*
+import io.ktor.server.plugins.requestvalidation.RequestValidationException
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 
 fun Application.configureStatusPages() {
     install(StatusPages) {
+
+        exception<RequestValidationException>{call, cause ->
+            call.respond(HttpStatusCode.BadRequest, mapOf("errors" to cause.reasons))
+        }
         exception<Throwable> { call, cause ->
             call.respondText("500 ${cause.message}", status = HttpStatusCode.InternalServerError)
         }

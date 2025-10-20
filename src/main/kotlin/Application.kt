@@ -1,6 +1,7 @@
 package com.antu
 
 import com.antu.Plugins.configureHTTP
+import com.antu.Plugins.configureRequestValidation
 import com.antu.Plugins.configureResources
 import com.antu.Plugins.configureRouting
 import com.antu.Plugins.configureSerialization
@@ -18,4 +19,5 @@ fun Application.module() {
     configureRouting()
     configureSerialization()
     configureStatusPages()
+    configureRequestValidation()
 }
